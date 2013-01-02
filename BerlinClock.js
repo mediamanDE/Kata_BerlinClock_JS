@@ -1,6 +1,5 @@
 var berlinClock = function() {
-   // var minutes =
-    var getHours = function(/*int*/ hours) {
+    var getHours = function(/*string*/ hours) {
         var number = parseInt(hours);
         var fives = Math.floor(number / 5);
         var ones = number % 5;
@@ -22,7 +21,7 @@ var berlinClock = function() {
         }
         return onesText;
     };
-    var getMinutes = function(/*int*/ min) {
+    var getMinutes = function(/*string*/ min) {
         var number = parseInt(min);
         var fives = Math.floor(number / 5);
         var ones = number % 5;
@@ -48,18 +47,14 @@ var berlinClock = function() {
         }
         return onesText;
     };
-    var getSeconds = function(/*int*/ sec) {
-        if (parseInt(sec) % 2 === 1) {
-            return "O";
-        }
-        return "Y";
+    var getSeconds = function(/*string*/ date) {
+        var seconds = date.substr(6, 2);
+        return parseInt(seconds) % 2 === 1 ? "O" : "Y";
     };
 
     return {
-        formatDate : function(/*string*/ date) {
-            return getSeconds(date.substr(6, 2)) + "\n" + getHours(date.substr(0, 2)) + "\n" + getMinutes(date.substr(3, 2));
+        formatDate: function(/*string*/ date) {
+            return getSeconds(date) + "\n" + getHours(date.substr(0, 2)) + "\n" + getMinutes(date.substr(3, 2));
         }
-
     }
-
 };
