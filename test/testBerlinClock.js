@@ -29,9 +29,33 @@ describe('testing...', function() {
     it("midnight+10m", function() {
         b = new berlinClock();
         expect(b.formatDate("00:10:00")).toBe("Y\nOOOO\nOOOO\nYYOOOOOOOOO\nOOOO");
-    });/*
+    });
+    it("00:10:01", function() {
+        b = new berlinClock();
+        expect(b.formatDate("00:10:01")).toBe("O\nOOOO\nOOOO\nYYOOOOOOOOO\nOOOO");
+    });
+    it("00:10:02", function() {
+        b = new berlinClock();
+        expect(b.formatDate("00:10:02")).toBe("Y\nOOOO\nOOOO\nYYOOOOOOOOO\nOOOO");
+    });
+    it("00:10:55", function() {
+        b = new berlinClock();
+        expect(b.formatDate("00:10:55")).toBe("O\nOOOO\nOOOO\nYYOOOOOOOOO\nOOOO");
+    });
     it("13:17:01", function() {
         b = new berlinClock();
         expect(b.formatDate("13:17:01")).toBe("O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO");
-    });*/
+    });
+    it("24:00:00", function() {
+        b = new berlinClock();
+        expect(b.formatDate("24:00:00")).toBe("Y\nRRRR\nRRRR\nOOOOOOOOOOO\nOOOO");
+    });
+    it("23:59:59", function() {
+        b = new berlinClock();
+        expect(b.formatDate("23:59:59")).toBe("O\nRRRR\nRRRO\nYYRYYRYYRYY\nYYYY");
+    });
+    it("19:59:59", function() {
+        b = new berlinClock();
+        expect(b.formatDate("19:59:59")).toBe("O\nRRRO\nRRRR\nYYRYYRYYRYY\nYYYY");
+    });
 });
