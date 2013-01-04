@@ -1,3 +1,15 @@
+
+describe('testing String generator', function() {
+    it("minutes", function() {
+        b = new berlinClock();
+        expect(b.generateString(60)).toBe("YYRYYRYYRYY");
+    });
+    it("hours", function() {
+        b = new berlinClock();
+        expect(b.generateString(24)).toBe("YYYY");
+    });
+});
+
 describe('testing...', function() {
     it("is an object", function() {
         expect(typeof new berlinClock).toBe("object");
