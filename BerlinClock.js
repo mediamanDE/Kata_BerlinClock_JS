@@ -6,32 +6,31 @@ String.prototype.replaceCharAtPosition = function(position, newChar) {
 
 var berlinClock = function() {
 
-    var formatString = function(/*int*/ time, /*string*/ fivesText, /*string*/ onesText) {
+    var formatString = function(/*string*/ time, /*string*/ fivesText, /*string*/ onesText) {
+        time = parseInt(time);
         var fives = Math.floor(time / 5);
         var ones = time % 5;
 
-        for(x=fives; x<fivesText.length; x++){
-            fivesText = fivesText.replaceCharAtPosition(x, 'O');
-        }
-
-        for(x=ones; x<onesText.length; x++){
-            onesText = onesText.replaceCharAtPosition(x, 'O');
-        }
+        fivesText = switchLampsOff(fivesText, fives);
+        onesText = switchLampsOff(onesText, ones);
 
         return fivesText + '\n' + onesText;
     };
 
+    var switchLampsOff = function(/*string*/ lamps, /*string*/ ons) {
+        for(x=ons; x<lamps.length; x++){
+            lamps=lamps.replaceCharAtPosition(x, 'O');
+        }
+        return lamps;
+    }
+
     var getHours = function(/*string*/ date) {
         var hours = date.substr(0, 2);
-        hours = parseInt(hours);
-
         return formatString(hours, "RRRR", "RRRR");
     };
 
     var getMinutes = function(/*string*/ date) {
         var hours = date.substr(3, 2);
-        hours = parseInt(hours);
-
         return formatString(hours, "YYRYYRYYRYY", "YYYY");
     };
 
