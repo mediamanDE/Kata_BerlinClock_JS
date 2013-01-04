@@ -6,13 +6,13 @@ String.prototype.replaceCharAtPosition = function(position, newChar) {
 
 var berlinClock = function() {
 
-    var formatString = function(/*string*/ time, /*int*/ max) {
+    var formatString = function(/*string*/ time, /*int*/ max, /*string*/ color1, /*string*/ color2) {
         time = parseInt(time);
         var fives = Math.floor(time / 5);
         var ones = time % 5;
 
-        var fivesText = generateString(max);
-        var onesText  = generateString(4);
+        var fivesText = generateString(max, color1, color2);
+        var onesText  = generateString(4, color1, color2);
 
         fivesText = switchLampsOff(fivesText, fives);
         onesText = switchLampsOff(onesText, ones);
@@ -29,12 +29,12 @@ var berlinClock = function() {
 
     var getHours = function(/*string*/ date) {
         var hours = date.substr(0, 2);
-        return formatString(hours, 24);
+        return formatString(hours, 24, "R", "R");
     };
 
     var getMinutes = function(/*string*/ date) {
         var mins = date.substr(3, 2);
-        return formatString(mins, 60);
+        return formatString(mins, 60, "Y", "R");
     };
 
     var getSeconds = function(/*string*/ date) {
@@ -42,7 +42,7 @@ var berlinClock = function() {
         return parseInt(seconds) % 2 === 1 ? "O" : "Y";
     };
 
-    var generateString = function(/*int*/ max) {
+    var generateString = function(/*int*/ max, /*string*/ color1, /*string*/ color2) {
         var segmentCount = Math.floor(max / 5);
         if (max % 5 === 0) {
             segmentCount--;
@@ -54,9 +54,9 @@ var berlinClock = function() {
         var string = '';
         for(var x=1; x<=segmentCount; x++) {
             if (segmentCount > 4 && x % 3 === 0) {
-                string = string + "R";
+                string = string + color2;
             } else {
-                string = string + "Y";
+                string = string + color1;
             }
         }
         return string;

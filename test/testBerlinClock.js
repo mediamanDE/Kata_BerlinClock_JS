@@ -2,11 +2,11 @@
 describe('testing String generator', function() {
     it("minutes", function() {
         b = new berlinClock();
-        expect(b.generateString(60)).toBe("YYRYYRYYRYY");
+        expect(b.generateString(60, "Y", "R")).toBe("YYRYYRYYRYY");
     });
     it("hours", function() {
         b = new berlinClock();
-        expect(b.generateString(24)).toBe("YYYY");
+        expect(b.generateString(24, "R", "R")).toBe("RRRR");
     });
 });
 
