@@ -8,6 +8,10 @@ describe('testing String generator', function() {
         b = new berlinClock();
         expect(b.generateString(24, "R", "R")).toBe("RRRR");
     });
+    it("years", function() {
+        b = new berlinClock();
+        expect(b.generateString(365, "G", "R")).toBe("RRRR");
+    });
 });
 
 describe('testing...', function() {

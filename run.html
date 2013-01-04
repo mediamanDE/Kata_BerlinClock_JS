@@ -1,0 +1,4 @@
+<script src="BerlinClock.js"></script>
+<script type="text/javascript">
+window.setInterval(function() {d=new Date(); document.body.innerHTML=("<center><pre>" + (new berlinClock()).formatDate(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()))}, 1000);
+</script>
